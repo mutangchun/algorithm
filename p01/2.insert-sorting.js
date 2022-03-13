@@ -14,16 +14,45 @@ function insert(dataArray, x){
 // insert(dataArray, x)
 // console.log(dataArray)
 
+// function insertHandle(A, i, x) {
+//   let p = i - 1
+
+//   while(A[p] > x && p >=0) {
+//     A[p + 1] = A[p]
+//     p--
+//   }
+
+//   A[p+1] = x
+// }
 
 function insertHandle(A, i, x) {
-  let p = i - 1
-
-  while(A[p] > x && p >=0) {
-    A[p + 1] = A[p]
-    p--
+  const index = searchIndex(A, i, x)
+  for (let r = i - 1; r >= index; r--) {
+    const temp = A[r]
+    A[r] = A[r + 1]
+    A[r + 1] = temp
+    console.log(index, 'index')
   }
+}
 
-  A[p+1] = x
+function searchIndex(arr, i, x) {
+  let l = 0,
+      r = i - 1,
+      g
+      
+  while(l <= r) {
+    g = Math.floor((l + r) / 2)
+
+    if (arr[g] < x) {
+      l = g + 1
+    } else {
+      r = g - 1
+    }
+
+  console.log('==========', l, r, '===========', arr)
+
+  }
+  return l
 }
 function insertion_sort(A){
   for (let i = 1; i < A.length; i++) {
